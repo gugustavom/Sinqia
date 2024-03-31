@@ -1,0 +1,198 @@
+unit Urelatorio;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  ppDB, ppDBPipe, ppComm, ppRelatv, ppProd, ppClass, ppReport, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids, Vcl.Imaging.pngimage, ppCtrls, ppVar, ppPrnabl,
+  ppBands, ppCache, ppDesignLayer, ppParameter;
+
+type
+  TFrelatorio = class(TForm)
+    Panel1: TPanel;
+    lbl_filtrar: TLabel;
+    cb_filtrar: TComboBox;
+    lbl_cod: TLabel;
+    pnl_codigo: TPanel;
+    edt_de: TEdit;
+    edt_ate: TEdit;
+    lbl_ate: TLabel;
+    pnl_estado: TPanel;
+    cb_estado: TComboBox;
+    DBGrid1: TDBGrid;
+    pnl_botoes: TPanel;
+    pnl_filtrar: TPanel;
+    pnl_imprimir: TPanel;
+    btn_filtrar: TSpeedButton;
+    btn_imprimir: TSpeedButton;
+    DScidades: TDataSource;
+    PPrelatorio: TppReport;
+    ppDBPipeline1: TppDBPipeline;
+    ppParameterList1: TppParameterList;
+    ppDesignLayers1: TppDesignLayers;
+    ppDesignLayer1: TppDesignLayer;
+    ppHeaderBand1: TppHeaderBand;
+    ppDetailBand1: TppDetailBand;
+    ppFooterBand1: TppFooterBand;
+    ppLabel1: TppLabel;
+    ppLabel2: TppLabel;
+    ppLabel3: TppLabel;
+    ppLabel4: TppLabel;
+    ppLabel5: TppLabel;
+    ppSystemVariable1: TppSystemVariable;
+    ppSystemVariable2: TppSystemVariable;
+    ppImage1: TppImage;
+    procedure cb_filtrarChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btn_filtrarClick(Sender: TObject);
+    procedure btn_imprimirClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frelatorio: TFrelatorio;
+
+implementation
+
+{$R *.dfm}
+
+uses Udm;
+
+procedure MakeRounded(Control: TWinControl);
+//Procedure que arredonda os componentes
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+  begin
+    R := ClientRect;
+    rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 20, 20);
+    Perform(EM_GETRECT, 0, lParam(@r));
+    InflateRect(r, - 5, - 5);
+    Perform(EM_SETRECTNP, 0, lParam(@r));
+    SetWindowRgn(Handle, rgn, True);
+  end;
+  end;
+
+procedure TFrelatorio.btn_filtrarClick(Sender: TObject);
+begin
+  if cb_filtrar.ItemIndex <> -1 then
+  begin
+    { Se for estado, limitar apenas a 1 campo }
+    if cb_filtrar.ItemIndex = 1 then
+    begin
+      if cb_estado.Text <> '' then
+      begin
+        with dm.ADOqry_cidades do
+        begin
+          Filtered := False;
+          Filter   := 'Estado LIKE ' + QuotedStr(cb_estado.Text);
+          Filtered := True;
+        end;
+      end
+      else
+        ShowMessage('Preencha todos os campos antes de continuar!');
+    end
+    else
+    begin
+      if (edt_de.Text <> '') AND (edt_ate.Text <> '') then
+      begin
+        with dm.ADOqry_cidades do
+        begin
+          Filtered := False;
+          Filter   := 'Codigo_Cidade >= ' + QuotedStr(edt_de.Text)+ ' AND Codigo_Cidade <= ' + QuotedStr(edt_ate.Text);
+          Filtered := True;
+        end;
+      end
+      else
+        ShowMessage('Preencha todos os campos antes de continuar!');
+    end
+  end
+  else
+    ShowMessage('Informe algum tipo de filtro antes de continuar!');
+end;
+
+procedure TFrelatorio.btn_imprimirClick(Sender: TObject);
+begin
+  if DScidades.DataSet.RecordCount = 0 then
+  begin
+    ShowMessage('Não há registros à serem exibidos!');
+    abort;
+  end;
+
+  PPlbl_tipo_filtro.Text := 'Tipo de filtro: ' + cb_filtrar.Text;
+  { Estado }
+  if cb_filtro.ItemIndex = -1 then
+  begin
+    ppLabel17.Visible := False;
+    ppLabel10.Visible := False;
+  end
+  else if cb_filtro.ItemIndex = 1 then
+  begin
+    ppLabel17.Text := 'Filtrando pelo estado: ' + cb_estado.Text;
+    ppLabel17.Visible := True;
+    ppLabel10.Visible := True;
+  end
+  else
+  begin
+    ppLabel17.Text := 'Filtrando do código : ' + edt_de.Text + ' até ' + edt_ate.Text;
+    ppLabel17.Visible := True;
+    ppLabel10.Visible := True;
+  end;
+  ppRelatorio.Print;
+end;
+
+procedure TFrelatorio.cb_filtrarChange(Sender: TObject);
+begin
+  if cb_filtrar.ItemIndex = 1 then
+  begin
+    edt_ate.ReadOnly   := True;
+    pnl_estado.Visible := True;
+    lbl_cod.Visible    := True;
+    pnl_codigo.Visible := False;
+    lbl_cod.Caption    := 'Informe a sigla do estado';
+  end
+  else
+  begin
+    edt_de.Visible := True;
+    edt_ate.Visible := True;
+    lbl_ate.Visible := True;
+    lbl_cod.Visible := True;
+
+    edt_ate.ReadOnly   := False;
+    pnl_estado.Visible  := False;
+    pnl_codigo.Visible  := True;
+    lbl_cod.Caption := 'Informe o Código Inicial e o Código Final';
+  end;
+end;
+
+procedure TFrelatorio.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Free;
+end;
+
+procedure TFrelatorio.FormCreate(Sender: TObject);
+begin
+  DScidades.DataSet.Close;
+  DScidades.DataSet.Open;
+
+  MakeRounded(edt_de);
+  MakeRounded(edt_ate);
+  MakeRounded(pnl_filtrar);
+  MakeRounded(pnl_imprimir);
+
+  edt_de.Visible    := False;
+  edt_ate.Visible   := False;
+  lbl_ate.Visible   := False;
+  lbl_cod.Visible   := False;
+  pnl_estado.Visible := False;
+end;
+
+end.

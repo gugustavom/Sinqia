@@ -1,0 +1,7 @@
+CREATE VIEW View_Cidades AS
+SELECT *
+FROM CIDADES;
+
+
+
+SELECT * FROM View_Cidades;

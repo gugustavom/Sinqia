@@ -1,0 +1,24 @@
+unit Urelatorio_cliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TFrelatorio_cliente = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frelatorio_cliente: TFrelatorio_cliente;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,3 @@
+--3 - Crirar um comando SELECT que retorne TODOS os nomes e os códigos dos clientes ordenados por nome do cliente.
+SELECT Nome, Codigo_Cliente
+FROM CLIENTES ORDER BY Nome;

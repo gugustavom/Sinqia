@@ -1,0 +1,108 @@
+unit Urelatorio;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  ppDB, ppDBPipe, ppComm, ppRelatv, ppProd, ppClass, ppReport, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFrelatorio = class(TForm)
+    Panel1: TPanel;
+    lbl_filtrar: TLabel;
+    cb_filtrar: TComboBox;
+    lbl_cod: TLabel;
+    pnl_codigo: TPanel;
+    edt_de: TEdit;
+    edt_ate: TEdit;
+    lbl_ate: TLabel;
+    pnl_estado: TPanel;
+    cb_estado: TComboBox;
+    DBGrid1: TDBGrid;
+    pnl_botoes: TPanel;
+    pnl_filtrar: TPanel;
+    pnl_imprimir: TPanel;
+    btn_filtrar: TSpeedButton;
+    btn_imprimir: TSpeedButton;
+    DScidades: TDataSource;
+    PPrelatorio: TppReport;
+    ppDBPipeline1: TppDBPipeline;
+    procedure cb_filtrarChange(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frelatorio: TFrelatorio;
+
+implementation
+
+{$R *.dfm}
+
+uses Udm;
+
+procedure MakeRounded(Control: TWinControl);
+//Procedure que arredonda os componentes
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+  begin
+    R := ClientRect;
+    rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 20, 20);
+    Perform(EM_GETRECT, 0, lParam(@r));
+    InflateRect(r, - 5, - 5);
+    Perform(EM_SETRECTNP, 0, lParam(@r));
+    SetWindowRgn(Handle, rgn, True);
+  end;
+  end;
+
+procedure TFrelatorio.cb_filtrarChange(Sender: TObject);
+begin
+  if cb_filtrar.ItemIndex = 1 then
+  begin
+    edt_ate.ReadOnly   := True;
+    pnl_estado.Visible := True;
+    lbl_cod.Visible    := True;
+    pnl_codigo.Visible := False;
+    lbl_cod.Caption    := 'Informe a sigla do estado';
+  end
+  else
+  begin
+    edt_de.Visible := True;
+    edt_ate.Visible := True;
+    lbl_ate.Visible := True;
+    lbl_cod.Visible := True;
+
+    edt_ate.ReadOnly   := False;
+    pnl_estado.Visible  := False;
+    pnl_codigo.Visible  := True;
+    lbl_cod.Caption := 'Informe o Código Inicial e o Código Final';
+  end;
+end;
+
+procedure TFrelatorio.FormCreate(Sender: TObject);
+begin
+  DScidades.DataSet.Close;
+  DScidades.DataSet.Open;
+
+  MakeRounded(edt_de);
+  MakeRounded(edt_ate);
+  MakeRounded(pnl_filtrar);
+  MakeRounded(pnl_imprimir);
+
+  //cb_estado.Visible := False;
+  edt_de.Visible    := False;
+  edt_ate.Visible   := False;
+  lbl_ate.Visible   := False;
+  lbl_cod.Visible   := False;
+  pnl_estado.Visible := False;
+end;
+
+end.

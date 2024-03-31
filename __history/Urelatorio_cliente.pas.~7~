@@ -1,0 +1,188 @@
+unit Urelatorio_cliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, ppDB, ppDBPipe, ppComm,
+  ppRelatv, ppProd, ppClass, ppReport, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TFrelatorio_cliente = class(TForm)
+    Panel1: TPanel;
+    pnl_botoes: TPanel;
+    pnl_filtrar: TPanel;
+    pnl_imprimir: TPanel;
+    btn_filtrar: TSpeedButton;
+    btn_imprimir: TSpeedButton;
+    lbl_filtrar: TLabel;
+    cb_filtrar: TComboBox;
+    pnl_codigo: TPanel;
+    lbl_ate: TLabel;
+    edt_de: TEdit;
+    edt_ate: TEdit;
+    lbl_cod: TLabel;
+    DBGrid1: TDBGrid;
+    DSclientes: TDataSource;
+    ppReport1: TppReport;
+    ppDBPipeline1: TppDBPipeline;
+    pnl_estado: TPanel;
+    cb_estado: TComboBox;
+    CheckBox1: TCheckBox;
+    Label1: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure cb_filtrarChange(Sender: TObject);
+    procedure btn_filtrarClick(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frelatorio_cliente: TFrelatorio_cliente;
+
+implementation
+
+{$R *.dfm}
+
+uses Udm;
+
+procedure MakeRounded(Control: TWinControl);
+//Procedure que arredonda os componentes
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+  begin
+    R := ClientRect;
+    rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 20, 20);
+    Perform(EM_GETRECT, 0, lParam(@r));
+    InflateRect(r, - 5, - 5);
+    Perform(EM_SETRECTNP, 0, lParam(@r));
+    SetWindowRgn(Handle, rgn, True);
+  end;
+  end;
+
+
+procedure TFrelatorio_cliente.btn_filtrarClick(Sender: TObject);
+begin
+  if cb_filtrar.ItemIndex <> -1 then
+  begin
+    { Se for estado, limitar apenas a 1 campo }
+    if cb_filtrar.ItemIndex = 2 then
+    begin
+      if cb_estado.Text <> '' then
+      begin
+        with dm.ADOqry_clientes do
+        begin
+          Filtered := False;
+          Filter   := 'Estado = ' + QuotedStr(cb_estado.Text);
+          Filtered := True;
+        end;
+      end
+      else
+        ShowMessage('Preencha todos os campos antes de continuar!');
+    end
+    else if cb_filtrar.ItemIndex = 1 then
+    begin
+      if (edt_de.Text <> '') AND (edt_ate.Text <> '') then
+      begin
+        with dm.ADOqry_clientes do
+        begin
+          Filtered := False;
+          Filter   := 'Codigo_Cidade >= ' + QuotedStr(edt_de.Text)+ ' AND Codigo_Cidade <= ' + QuotedStr(edt_ate.Text);
+          Filtered := True;
+        end;
+      end
+      else
+        ShowMessage('Preencha todos os campos antes de continuar!');
+    end
+    else
+    begin
+      if (edt_de.Text <> '') AND (edt_ate.Text <> '') then
+      begin
+        with dm.ADOqry_clientes do
+        begin
+          Filtered := False;
+          Filter   := 'Codigo_Cliente >= ' + QuotedStr(edt_de.Text)+ ' AND Codigo_Cliente <= ' + QuotedStr(edt_ate.Text);
+          Filtered := True;
+        end;
+      end
+      else
+        ShowMessage('Preencha todos os campos antes de continuar!');
+    end
+  end
+  else
+    ShowMessage('Informe algum tipo de filtro antes de continuar!');
+end;
+
+procedure TFrelatorio_cliente.cb_filtrarChange(Sender: TObject);
+begin
+  if cb_filtrar.Text = 'Código da Cidade' then
+  begin
+    edt_de.Visible     := True;
+    edt_ate.Visible    := True;
+    lbl_ate.Visible    := True;
+    lbl_cod.Visible    := True;
+    pnl_estado.Visible := False;
+
+    edt_ate.ReadOnly   := False;
+    pnl_codigo.Visible := True;
+    lbl_cod.Caption := 'Informe o Código Inicial e o Código Final';
+    edt_de.Text  := '';
+    edt_ate.Text := '';
+  end
+
+  else if cb_filtrar.Text = 'Código do Cliente' then
+  begin
+    edt_de.Visible     := True;
+    edt_ate.Visible    := True;
+    lbl_ate.Visible    := True;
+    lbl_cod.Visible    := True;
+    pnl_estado.Visible := False;
+
+    edt_ate.ReadOnly   := False;
+    pnl_codigo.Visible := True;
+    lbl_cod.Caption    := 'Informe o Código Inicial e o Código Final';
+    edt_de.Text  := '';
+    edt_ate.Text := '';
+  end
+
+  else if cb_filtrar.Text = 'Estado' then
+  begin
+    edt_ate.ReadOnly   := True;
+    pnl_estado.Visible := True;
+    lbl_cod.Visible    := True;
+    pnl_codigo.Visible := False;
+    lbl_cod.Caption    := 'Informe a sigla do estado';
+  end;
+
+end;
+
+procedure TFrelatorio_cliente.CheckBox1Click(Sender: TObject);
+begin
+ //
+end;
+
+procedure TFrelatorio_cliente.FormCreate(Sender: TObject);
+begin
+  DSclientes.DataSet.Close;
+  DSclientes.DataSet.Open;
+
+  MakeRounded(edt_de);
+  MakeRounded(edt_ate);
+  MakeRounded(pnl_filtrar);
+  MakeRounded(pnl_imprimir);
+
+  edt_de.Visible     := False;
+  edt_ate.Visible    := False;
+  lbl_ate.Visible    := False;
+  lbl_cod.Visible    := False;
+  pnl_estado.Visible := False;
+end;
+
+end.

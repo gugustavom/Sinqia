@@ -1,0 +1,34 @@
+unit Ulista_clientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Buttons, Vcl.ExtCtrls,
+  Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFlista_clientes = class(TForm)
+    DBGrid1: TDBGrid;
+    Panel1: TPanel;
+    pnl_editar: TPanel;
+    pnl_excluir: TPanel;
+    btn_excluir: TSpeedButton;
+    btn_editar: TSpeedButton;
+    DSclientes: TDataSource;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Flista_clientes: TFlista_clientes;
+
+implementation
+
+{$R *.dfm}
+
+uses Udm;
+
+end.

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/03/27 08:06:13.000.603,=C:\Users\gusta\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/27 08:13:55.000.669,D:\Teste_Sinqia\Uprincipal.pas=C:\Users\gusta\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/03/27 08:13:55.000.669,D:\Teste_Sinqia\Uprincipal.dfm=C:\Users\gusta\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2024/03/27 08:14:20.000.583,D:\Teste_Sinqia\TesteDelphi.dproj=C:\Users\gusta\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2024/03/27 11:27:58.000.062,=D:\Teste_Sinqia\Unit2.pas</Transaction>
+    <Transaction>2024/03/27 11:28:29.000.115,D:\Teste_Sinqia\Ucad_cidade.dfm=D:\Teste_Sinqia\Unit2.dfm</Transaction>
+    <Transaction>2024/03/27 11:28:29.000.115,D:\Teste_Sinqia\Ucad_cidade.pas=D:\Teste_Sinqia\Unit2.pas</Transaction>
+    <Transaction>2024/03/27 12:22:53.000.766,=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/27 12:23:08.000.993,D:\Teste_Sinqia\Ucad_cliente.dfm=D:\Teste_Sinqia\Unit1.dfm</Transaction>
+    <Transaction>2024/03/27 12:23:08.000.993,D:\Teste_Sinqia\Ucad_cliente.pas=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/27 21:03:12.000.519,=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/27 21:03:30.000.250,D:\Teste_Sinqia\Unit1.dfm=D:\Teste_Sinqia\Udm.dfm</Transaction>
+    <Transaction>2024/03/27 21:03:30.000.250,D:\Teste_Sinqia\Unit1.pas=D:\Teste_Sinqia\Udm.pas</Transaction>
+    <Transaction>2024/03/28 20:54:42.000.008,=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/28 20:55:07.000.968,D:\Teste_Sinqia\Unit1.pas=D:\Teste_Sinqia\Ulista_cidades.pas</Transaction>
+    <Transaction>2024/03/28 20:55:07.000.968,D:\Teste_Sinqia\Unit1.dfm=D:\Teste_Sinqia\Ulista_cidades.dfm</Transaction>
+    <Transaction>2024/03/29 15:32:54.000.638,=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/29 15:33:17.000.367,D:\Teste_Sinqia\Ulista_clientes.dfm=D:\Teste_Sinqia\Unit1.dfm</Transaction>
+    <Transaction>2024/03/29 15:33:17.000.367,D:\Teste_Sinqia\Ulista_clientes.pas=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/29 16:49:57.000.464,=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/29 16:50:08.000.755,D:\Teste_Sinqia\Unit1.dfm=D:\Teste_Sinqia\Urelatorio.dfm</Transaction>
+    <Transaction>2024/03/29 16:50:08.000.755,D:\Teste_Sinqia\Unit1.pas=D:\Teste_Sinqia\Urelatorio.pas</Transaction>
+    <Transaction>2024/03/30 18:51:18.000.094,D:\Teste_Sinqia\Urelatorio.dfm=D:\Teste_Sinqia\Urelatorio_cidade.dfm</Transaction>
+    <Transaction>2024/03/30 18:51:18.000.094,D:\Teste_Sinqia\Urelatorio.pas=D:\Teste_Sinqia\Urelatorio_cidade.pas</Transaction>
+    <Transaction>2024/03/30 18:52:34.000.392,=D:\Teste_Sinqia\Unit1.pas</Transaction>
+    <Transaction>2024/03/30 18:53:09.000.633,D:\Teste_Sinqia\Unit1.dfm=D:\Teste_Sinqia\Urelatorio_cliente.dfm</Transaction>
+    <Transaction>2024/03/30 18:53:09.000.633,D:\Teste_Sinqia\Unit1.pas=D:\Teste_Sinqia\Urelatorio_cliente.pas</Transaction>
+    <Transaction>2024/03/30 21:12:03.584,D:\Teste_Sinqia\Urelatorio_cliente.pas=</Transaction>
+  </Transactions>
+</BorlandProject>

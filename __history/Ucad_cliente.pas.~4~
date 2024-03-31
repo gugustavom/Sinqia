@@ -1,0 +1,46 @@
+unit Ucad_cliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFcad_cliente = class(TForm)
+    Panel1: TPanel;
+    edt_nome: TEdit;
+    edt_cpf: TEdit;
+    edt_telefone: TEdit;
+    edt_bairro: TEdit;
+    edt_complemento: TEdit;
+    edt_endereco: TEdit;
+    cb_cidade: TComboBox;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    edt_email: TEdit;
+    Image9: TImage;
+    edt_cep: TEdit;
+    pnl_gravar: TPanel;
+    SpeedButton1: TSpeedButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    estado : integer;
+  end;
+
+var
+  Fcad_cliente: TFcad_cliente;
+
+implementation
+
+{$R *.dfm}
+
+end.

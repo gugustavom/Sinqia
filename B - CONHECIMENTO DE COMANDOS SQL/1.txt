@@ -1,0 +1,9 @@
+--1 - Criar um comando SELECT que retorne APENAS o nome dos clientes da cidade "TUPA". Utilizad o EXISTS para realizar a condição.
+SELECT CLI.Nome
+FROM CLIENTES CLI
+WHERE EXISTS (
+    SELECT 1
+    FROM CIDADES CID
+    WHERE CID.Nome = 'Tupã'
+    AND CLI.Codigo_Cidade = CID.Codigo_Cidade
+);

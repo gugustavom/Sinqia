@@ -1,0 +1,47 @@
+unit Urelatorio_cliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, ppDB, ppDBPipe, ppComm,
+  ppRelatv, ppProd, ppClass, ppReport, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls;
+
+type
+  TFrelatorio_cliente = class(TForm)
+    Panel1: TPanel;
+    pnl_botoes: TPanel;
+    pnl_filtrar: TPanel;
+    pnl_imprimir: TPanel;
+    btn_filtrar: TSpeedButton;
+    btn_imprimir: TSpeedButton;
+    lbl_filtrar: TLabel;
+    cb_filtrar: TComboBox;
+    pnl_estado: TPanel;
+    cb_estado: TComboBox;
+    pnl_codigo: TPanel;
+    lbl_ate: TLabel;
+    edt_de: TEdit;
+    edt_ate: TEdit;
+    lbl_cod: TLabel;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
+    ppReport1: TppReport;
+    ppDBPipeline1: TppDBPipeline;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frelatorio_cliente: TFrelatorio_cliente;
+
+implementation
+
+{$R *.dfm}
+
+uses Udm;
+
+end.

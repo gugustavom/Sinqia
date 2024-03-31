@@ -1,0 +1,3 @@
+--6 - Criar um INSERT na tabela de clientes de um registro qualquer com todos os campos da tabela. (valores livres)
+INSERT INTO CLIENTES (Nome, CGC_CPF_Cliente, Telefone, Endereco, Bairro, Complemento, Cep, Email, Codigo_Cidade)
+VALUES ('Gustavo Mendes','42409161863','14997215461','Avenida Tabajaras, 111','Centro','A','17600360','gustavo@gmail.com',9);

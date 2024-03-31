@@ -1,0 +1,83 @@
+object Fcad_cidade: TFcad_cidade
+  Left = 0
+  Top = 0
+  ClientHeight = 452
+  ClientWidth = 343
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 343
+    Height = 60
+    Align = alTop
+    Color = 2971382
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 334
+  end
+  object edt_nome: TEdit
+    Left = 104
+    Top = 136
+    Width = 180
+    Height = 30
+    TabOrder = 1
+  end
+  object edt_cep_inicial: TEdit
+    Left = 104
+    Top = 288
+    Width = 180
+    Height = 30
+    TabOrder = 2
+  end
+  object edt_cep_final: TEdit
+    Left = 104
+    Top = 344
+    Width = 180
+    Height = 30
+    TabOrder = 3
+  end
+  object cb_estado: TComboBox
+    Left = 104
+    Top = 208
+    Width = 180
+    Height = 21
+    TabOrder = 4
+    Items.Strings = (
+      'AC'
+      'AL'
+      'AP'
+      'AM'
+      'BA'
+      'CE'
+      'DF'
+      'ES'
+      'GO'
+      'MA'
+      'MT'
+      'MS'
+      'MG'
+      'PA'
+      'PB'
+      'PR'
+      'PE'
+      'PI'
+      'RJ'
+      'RN'
+      'RS'
+      'RO'
+      'RR'
+      'SC'
+      'SP'
+      'SE'
+      'TO')
+  end
+end

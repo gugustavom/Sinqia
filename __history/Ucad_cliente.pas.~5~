@@ -1,0 +1,87 @@
+unit Ucad_cliente;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFcad_cliente = class(TForm)
+    Panel1: TPanel;
+    edt_nome: TEdit;
+    edt_cpf: TEdit;
+    edt_telefone: TEdit;
+    edt_bairro: TEdit;
+    edt_complemento: TEdit;
+    edt_endereco: TEdit;
+    cb_cidade: TComboBox;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    edt_email: TEdit;
+    Image9: TImage;
+    edt_cep: TEdit;
+    pnl_gravar: TPanel;
+    btn_gravar: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    estado : integer;
+  end;
+
+var
+  Fcad_cliente: TFcad_cliente;
+
+implementation
+
+{$R *.dfm}
+
+procedure MakeRounded(Control: TWinControl);
+//Procedure para arredondar os componentes
+var
+R: TRect;
+Rgn: HRGN;
+begin
+with Control do
+  begin
+    R := ClientRect;
+   rgn := CreateRoundRectRgn(R.Left, R.Top, R.Right, R.Bottom, 20, 20);
+    Perform(EM_GETRECT, 0, lParam(@r));
+   InflateRect(r, - 5, - 5);
+    Perform(EM_SETRECTNP, 0, lParam(@r));
+    SetWindowRgn(Handle, rgn, True);
+  end;
+end;
+
+procedure TFcad_cliente.FormCreate(Sender: TObject);
+begin
+  Makerounded(edt_nome);
+  Makerounded(edt_cpf);
+  Makerounded(edt_telefone);
+  Makerounded(edt_endereco);
+  Makerounded(edt_bairro);
+  Makerounded(edt_complemento);
+  Makerounded(cb_cidade);
+  Makerounded(edt_cep);
+  Makerounded(edt_email);
+  Makerounded(pnl_gravar);
+end;
+
+end.

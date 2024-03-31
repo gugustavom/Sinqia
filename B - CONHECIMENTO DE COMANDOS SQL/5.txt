@@ -1,0 +1,3 @@
+--5 - Criar um comando UPDATE que altere o estado de todas as cidades para o estado "SP" quando estiverem com estado igual a "PR".
+UPDATE CIDADES SET Nome = 'SP'
+WHERE Nome = 'PR';

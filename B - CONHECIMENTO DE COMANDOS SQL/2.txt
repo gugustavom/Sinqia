@@ -1,0 +1,5 @@
+--2- Criar um comando SELECT que retorne o nome do cliente e o nome da cidade de todos os registros.
+SELECT CLI.Nome, CID.Nome
+FROM CLIENTES CLI 
+INNER JOIN CIDADES CID ON
+CLI.Codigo_Cidade = CID.Codigo_Cidade;

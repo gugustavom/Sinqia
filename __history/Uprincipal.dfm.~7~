@@ -1,0 +1,134 @@
+object Fprincipal: TFprincipal
+  Left = 0
+  Top = 0
+  Caption = 'Fprincipal'
+  ClientHeight = 330
+  ClientWidth = 727
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClick = FormClick
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 727
+    Height = 60
+    Align = alTop
+    Color = 2971382
+    ParentBackground = False
+    TabOrder = 0
+    object pnl_cidades: TPanel
+      Left = 32
+      Top = 9
+      Width = 185
+      Height = 41
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 0
+      object btn_cidades: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 185
+        Height = 41
+        Cursor = crHandPoint
+        Flat = True
+        OnClick = btn_cidadesClick
+      end
+    end
+    object pnl_clientes: TPanel
+      Left = 272
+      Top = 9
+      Width = 185
+      Height = 41
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 1
+      object btn_clientes: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 185
+        Height = 41
+        Cursor = crHandPoint
+        Flat = True
+        OnClick = btn_clientesClick
+      end
+    end
+    object pnl_relatorios: TPanel
+      Left = 512
+      Top = 9
+      Width = 185
+      Height = 41
+      Color = clWhite
+      ParentBackground = False
+      TabOrder = 2
+      object btn_relatorios: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 185
+        Height = 41
+        Cursor = crHandPoint
+        Flat = True
+        OnClick = btn_relatoriosClick
+      end
+    end
+  end
+  object pnl_acoes_cidades: TPanel
+    Left = 32
+    Top = 60
+    Width = 185
+    Height = 82
+    Color = 2971382
+    ParentBackground = False
+    TabOrder = 1
+    object btn_cad_cidade: TSpeedButton
+      Left = 0
+      Top = 2
+      Width = 185
+      Height = 41
+      Cursor = crHandPoint
+      Flat = True
+      OnClick = btn_cad_cidadeClick
+    end
+    object btn_lista_cidade: TSpeedButton
+      Left = 0
+      Top = 41
+      Width = 185
+      Height = 41
+      Cursor = crHandPoint
+      Flat = True
+    end
+  end
+  object pnl_acoes_clientes: TPanel
+    Left = 272
+    Top = 60
+    Width = 185
+    Height = 82
+    Color = 2971382
+    ParentBackground = False
+    TabOrder = 2
+    object SpeedButton1: TSpeedButton
+      Left = 0
+      Top = 0
+      Width = 185
+      Height = 41
+      Cursor = crHandPoint
+      Flat = True
+      OnClick = SpeedButton1Click
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 0
+      Top = 41
+      Width = 185
+      Height = 41
+      Cursor = crHandPoint
+      Flat = True
+    end
+  end
+end

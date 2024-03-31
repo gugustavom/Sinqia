@@ -1,0 +1,95 @@
+object dm: Tdm
+  Left = 0
+  Top = 0
+  Caption = 'dm'
+  ClientHeight = 149
+  ClientWidth = 364
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object ADOConnection1: TADOConnection
+    Connected = True
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
+      'fo=False;Initial Catalog=gustavo;Data Source=DESKTOP-EFUQVFS\SQL' +
+      'EXPRESS'
+    Provider = 'SQLOLEDB.1'
+    Left = 32
+    Top = 16
+  end
+  object ADOProc_cidades: TADOStoredProc
+    Connection = ADOConnection1
+    ProcedureName = 'pd_operacoes_cidades;1'
+    Parameters = <
+      item
+        Name = '@opcao'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@codigo_cidade'
+        Attributes = [paNullable]
+        DataType = ftInteger
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = '@Nome'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 50
+        Value = Null
+      end
+      item
+        Name = '@Estado'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 2
+        Value = Null
+      end
+      item
+        Name = '@Cep_Inicial'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 8
+        Value = Null
+      end
+      item
+        Name = '@Cep_Final'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 8
+        Value = Null
+      end
+      item
+        Name = '@ErrMsg'
+        Attributes = [paNullable]
+        DataType = ftString
+        Direction = pdInputOutput
+        Size = 255
+        Value = Null
+      end>
+    Prepared = True
+    Left = 112
+    Top = 16
+  end
+  object ADOqry_cidades: TADOQuery
+    Active = True
+    Connection = ADOConnection1
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT Nome, Estado, Cep_Inicial, Cep_Final'
+      'FROM CIDADES;')
+    Left = 32
+    Top = 88
+  end
+end
